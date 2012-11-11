@@ -23,7 +23,7 @@ public class ParkManager {
 
 	// 取车
 	// id:存车ID
-	public Object Pop(int id) {
+	public Object PopCar(int id) {
 		if (map.containsKey(id)) {
 			return map.get(id);
 		}
@@ -32,7 +32,7 @@ public class ParkManager {
 
 	// 显示空位数
 	public int Display() {
-		return map.size();
+		return MaxCarCount-map.size();
 	}
 
 	// 车库是否已满
