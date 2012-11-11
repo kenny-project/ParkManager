@@ -24,6 +24,7 @@ public class test
 		int result=	manager.PushCar(1, new Object());
 
 		Assert.assertEquals(99, manager.Display());
+		manager.Clear();
 		
 		//case 3
 		for(int i=0;i<ParkManager.MaxCount;i++)
@@ -31,11 +32,8 @@ public class test
 			manager.PushCar(i, new Object());
 		}
 		Assert.assertTrue(manager.bFull());
-		
 		result=manager.PushCar(5000,new Object());
 		Assert.assertEquals(0, result);
-		
-		
 	}
 	//È¡³µ
 	@Test

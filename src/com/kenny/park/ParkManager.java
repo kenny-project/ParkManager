@@ -9,7 +9,10 @@ public class ParkManager {
 	public void Init() {
 		map.clear();
 	}
-
+	public void Clear()
+	{
+		map.clear();
+	}
 	// Í£³µ
 	// id:´æ³µID object£ºcar
 	public int PushCar(int id, Object car) {
