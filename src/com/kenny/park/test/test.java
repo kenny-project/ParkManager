@@ -19,20 +19,36 @@ public class test
 	@Test
 	public void Push()
 	{
+		//case 1
 		ParkManager manager=new ParkManager();
 		int result=	manager.PushCar(1, new Object());
 
 		Assert.assertEquals(99, manager.Display());
 		
-//		for(int i=0;i<ParkManager.MaxCarCount;i++)
-//		{
-//			int result=	manager.PushCar(i, new Object());
-//		}
+		//case 3
+		for(int i=0;i<ParkManager.MaxCount;i++)
+		{
+			manager.PushCar(i, new Object());
+		}
+		Assert.assertTrue(manager.bFull());
+		
+		result=manager.PushCar(5000,new Object());
+		Assert.assertEquals(0, result);
+		
+		
 	}
 	//È¡³µ
 	@Test
 	public void Pop()
 	{
+		//case 2
+		ParkManager manager=new ParkManager();
+		int result=	manager.PushCar(1, new Object());
+		Assert.assertEquals(ParkManager.MaxCount-1, manager.Display());
+		Object obj=manager.PopCar(1);
+		Assert.assertNotNull(obj);		
+		Assert.assertEquals(ParkManager.MaxCount, manager.Display());
+		
 //		ParkManager manager=new ParkManager();
 //		for(int i=0;i<manager.Display();i++)
 //		{
