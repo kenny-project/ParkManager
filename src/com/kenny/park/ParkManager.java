@@ -2,46 +2,45 @@ package com.kenny.park;
 
 import java.util.HashMap;
 
+import com.kenny.park.bean.Car;
+
 public class ParkManager {
 	public static final int MaxCount = 100;
-	private HashMap<Integer, Object> map = new HashMap<Integer, Object>();
+	private HashMap<Integer, Car> map = new HashMap<Integer, Car>();
 
 	public void Init() {
 		map.clear();
 	}
-	public void Clear()
-	{
+
+	public void Clear() {
 		map.clear();
 	}
+
 	// 停车
 	// id:存车ID object：car
-	public int PushCar(int id, Object car) {
+	public int PushCar(int id, Car car) {
 
-		if(!bFull())
-		{
-		if (!map.containsKey(id)) {
-			map.put(id, car);
-			return 1;
-		}
+		if (!bFull()) {
+			if (!map.containsKey(id)) {
+				map.put(id, car);
+				return 1;
+			}
 		}
 		return 0;
 	}
 
 	// 取车
 	// id:存车ID
-	public Object PopCar(int id) {
-		if (map.containsKey(id)) 
-		{
-			Object obj=map.get(id);
-			map.remove(id);
-			return obj;
+	public Car PopCar(int id) {
+		if (map.containsKey(id)) {
+			return map.remove(id);
 		}
 		return null;
 	}
 
 	// 显示空位数
 	public int Display() {
-		return MaxCount-map.size();
+		return MaxCount - map.size();
 	}
 
 	// 车库是否已满
