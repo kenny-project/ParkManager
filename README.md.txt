@@ -23,3 +23,5 @@
 3.3 取一个车辆时，数量能否正常显示。
 
 1，存取车。都需要一个关键ID值来完成取车
+
+git://github.com/xianjing/l1-parkingLots.git
