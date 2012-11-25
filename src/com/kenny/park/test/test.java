@@ -4,7 +4,6 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.kenny.park.ParkManager;
 import com.kenny.park.ParkPlances;
 import com.kenny.park.bean.Car;
 

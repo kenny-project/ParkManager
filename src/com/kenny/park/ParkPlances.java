@@ -32,15 +32,35 @@ public class ParkPlances
 		}
 	}
 	// 停车
-	// id:存车ID object：car
-	public int PushCar(int id, Car car) 
+	// id:存车ID object：car type: 1:聪明的小弟 2：傻的小弟
+	public int PushCar(int type,int id, Car car) 
 	{
+		if(type==1)
+		{
+			int maxDisplay=0;
+			ParkManager temp=null;
 		for (ParkManager park : mParkList) 
 		{
-			if (!park.bFull()) 
+			if (maxDisplay<park.Display()) 
 			{
-				return park.PushCar(id, car);
+				temp=park;
 			}
+		}
+		if(temp!=null)
+		{
+		return temp.PushCar(id, car);
+		}
+		
+		}
+		else
+		{
+			for (ParkManager park : mParkList) 
+			{
+				if (!park.bFull()) 
+				{
+					return park.PushCar(id, car);
+				}
+			}			
 		}
 		return 0;
 	}
