@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.kenny.park.bean.Car;
 
 public class ParkManager {
-	public static final int MaxCount = 100;
+	private int MaxCount = 100;
 	private HashMap<Integer, Car> map = new HashMap<Integer, Car>();
 
 	public void Init() {
@@ -14,6 +14,13 @@ public class ParkManager {
 
 	public void Clear() {
 		map.clear();
+	}
+	public int getMaxCount()
+	{
+		return MaxCount;
+	}
+	public void setMaxCount(int maxCount) {
+		MaxCount = maxCount;
 	}
 
 	// Í£³µ
