@@ -29,9 +29,6 @@ public class test
 		Assert.assertTrue(manager.bFull());
 		result=manager.PushCar(5000,new Car());
 		Assert.assertEquals(0, result);
-		
-		
-		
 	}
 	//È¡³µ
 	@Test
