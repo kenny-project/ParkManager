@@ -16,7 +16,7 @@ public class test
 		//case 1
 		ParkPlances manager=new ParkPlances();
 		manager.Init();
-		int result=	manager.PushCar(1, new Car());
+		int result=	manager.PushCar(1,1, new Car());
 
 		Assert.assertEquals(manager.getMaxCount()-1, manager.Display());
 		manager.Clear();
@@ -24,10 +24,10 @@ public class test
 		//case 3
 		for(int i=0;i<manager.getMaxCount();i++)
 		{
-			manager.PushCar(i, new Car());
+			manager.PushCar(1,i, new Car());
 		}
 		Assert.assertTrue(manager.bFull());
-		result=manager.PushCar(5000,new Car());
+		result=manager.PushCar(1,5000,new Car());
 		Assert.assertEquals(0, result);
 	}
 	//È¡³µ

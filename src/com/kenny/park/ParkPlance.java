@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 import com.kenny.park.bean.Car;
 
-public class ParkManager {
+///停车场
+public class ParkPlance {
 	private int MaxCount = 100;
 	private HashMap<Integer, Car> map = new HashMap<Integer, Car>();
 
@@ -69,5 +70,12 @@ public class ParkManager {
 			return false;
 		}
 	}
-
+	/**
+	 * 获取空置率
+	 * @return
+	 */
+	public int getVacancy()
+	{
+		return (map.size()*100)/(MaxCount*100);
+	}
 }
