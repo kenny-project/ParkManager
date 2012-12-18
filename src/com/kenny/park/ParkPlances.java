@@ -8,17 +8,20 @@ import com.kenny.park.bean.Car;
 
 public class ParkPlances
 {
-	public static int nParkingBoy=0;//停车仔
-	public static int nSmartParkingBoy=1;//聪明停车仔
-	public static int nSuperParkingBoy=2;//Super 停车仔
-	public static int nParkingManager=3;//停车场经理
+	public final static int nParkingBoy=0;//停车仔
+	public final  static int nSmartParkingBoy=1;//聪明停车仔
+	public final  static int nSuperParkingBoy=2;//Super停车仔
+	public final  static int nParkingManager=3;//停车场经理
+	public final  static int nParkingDirector=4;//停车场经理
 	List<ParkPlance> mParkList = new ArrayList<ParkPlance>();
 	int maxCount = 0;
 	public void Init()
 	{
 		ParkPlance park1 = new ParkPlance();
+		park1.setId(1);
 		park1.setMaxCount(10);
 		ParkPlance park2 = new ParkPlance();
+		park2.setId(2);
 		park2.setMaxCount(10);
 		mParkList.add(park1);
 		mParkList.add(park2);
@@ -38,6 +41,44 @@ public class ParkPlances
 			park.Clear();
 		}
 	}
+	/**
+	 * 	type: 
+	 * 1:聪明的小弟
+	 * 2：傻的小弟 
+	 * 3: super boy
+	 * 4:Parking Manager
+	 * @param type
+	 * @return
+	 */
+	public String getChart(int type)
+	{
+		String result="";
+		switch(type)
+		{
+			case nParkingManager:
+				break;
+			case nParkingDirector:
+				break;
+			case nSmartParkingBoy:
+			case nSuperParkingBoy:
+			case nParkingBoy:
+				getParkingBoyChart(type);
+				break;
+		}
+	}
+	/**
+	 * 返回指定parkingBoy Chart报表内容
+	 * @return
+	 */
+	private String getParkingBoyChart(int type)
+	{
+		String result="停车仔编号:"+type;
+		for (ParkPlance park : mParkList)
+		{
+			result+=park.getChart()+"\n";
+		}
+		return result;
+	}
 	// 停车
 	// id:存车ID object：car type: 1:聪明的小弟 2：傻的小弟 3: super boy
 	// 4:Parking Manager
@@ -45,58 +86,10 @@ public class ParkPlances
 	{
 		if (type == nParkingManager)
 		{// Parking Manager
-			type = new Random().nextInt(nParkingManager+1);
-			if (type == nParkingManager)
-			{
-				PushCar(id, car);
-			}
-			else
-			{
-				return PushCar(type, id, car);
-			}
-		}
-		if (type == nSuperParkingBoy)
-		{// 停在空置率最高的那个停车场
-			int maxVacancy = 0;
-			ParkPlance temp = null;
-			for (ParkPlance park : mParkList)
-			{
-				if (maxVacancy < park.getVacancy())
-				{
-					temp = park;
-				}
-			}
-			if (temp != null) { return temp.PushCar(id, car); }
-		}
-		else if (type == nSmartParkingBoy)
-		{// 空位最高的车痊
-			int maxDisplay = 0;
-			ParkPlance temp = null;
-			for (ParkPlance park : mParkList)
-			{
-				if (maxDisplay < park.Display())
-				{
-					temp = park;
-				}
-			}
-			if (temp != null) { return temp.PushCar(id, car); }
 
 		}
-		else if(type==nParkingBoy)
-		{
-			PushCar(id, car);
-		}
-		else
 		{
 			throw new Exception("未找到相应的停车仔");
-		}
-		return 0;
-	}
-	public int PushCar(int id, Car car)
-	{
-		for (ParkPlance park : mParkList)
-		{
-			if (!park.bFull()) { return park.PushCar(id, car); }
 		}
 		return 0;
 	}
