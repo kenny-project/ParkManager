@@ -8,7 +8,7 @@ public class ParkingBoy implements IParkingBoy
 {
 	protected int nType=ParkPlances.nParkingBoy;
 	protected List<ParkPlance> mParkList;
-	public void setParkList(List<ParkPlance> mParkList)
+	public void setParkPlanceList(List<ParkPlance> mParkList)
 	{
 		this.mParkList = mParkList;
 	}

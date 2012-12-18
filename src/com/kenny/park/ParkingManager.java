@@ -16,7 +16,7 @@ public class ParkingManager implements IParkingBoy
 		mParkList.add(mParkingBoy);
 	}
 	protected List<ParkPlance> mParkPlanceList;
-	public void setParkList(List<ParkPlance> mParkList)
+	public void setParkPlanceList(List<ParkPlance> mParkList)
 	{
 		this.mParkPlanceList = mParkList;
 	}
