@@ -2,7 +2,6 @@ package com.kenny.park;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.kenny.park.bean.Car;
 
@@ -14,6 +13,10 @@ public class ParkPlances
 	public final  static int nParkingManager=3;//停车场经理
 	public final  static int nParkingDirector=4;//停车场经理
 	List<ParkPlance> mParkList = new ArrayList<ParkPlance>();
+	public List<ParkPlance> getParkList()
+	{
+		return mParkList;
+	}
 	int maxCount = 0;
 	public void Init()
 	{
@@ -40,58 +43,6 @@ public class ParkPlances
 		{
 			park.Clear();
 		}
-	}
-	/**
-	 * 	type: 
-	 * 1:聪明的小弟
-	 * 2：傻的小弟 
-	 * 3: super boy
-	 * 4:Parking Manager
-	 * @param type
-	 * @return
-	 */
-	public String getChart(int type)
-	{
-		String result="";
-		switch(type)
-		{
-			case nParkingManager:
-				break;
-			case nParkingDirector:
-				break;
-			case nSmartParkingBoy:
-			case nSuperParkingBoy:
-			case nParkingBoy:
-				getParkingBoyChart(type);
-				break;
-		}
-	}
-	/**
-	 * 返回指定parkingBoy Chart报表内容
-	 * @return
-	 */
-	private String getParkingBoyChart(int type)
-	{
-		String result="停车仔编号:"+type;
-		for (ParkPlance park : mParkList)
-		{
-			result+=park.getChart()+"\n";
-		}
-		return result;
-	}
-	// 停车
-	// id:存车ID object：car type: 1:聪明的小弟 2：傻的小弟 3: super boy
-	// 4:Parking Manager
-	public int PushCar(int type, int id, Car car) throws Exception
-	{
-		if (type == nParkingManager)
-		{// Parking Manager
-
-		}
-		{
-			throw new Exception("未找到相应的停车仔");
-		}
-		return 0;
 	}
 	// 取车
 	// id:存车ID

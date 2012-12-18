@@ -15,16 +15,21 @@ public class ParkingManager implements IParkingBoy
 	{
 		mParkList.add(mParkingBoy);
 	}
+	protected List<ParkPlance> mParkPlanceList;
+	public void setParkList(List<ParkPlance> mParkList)
+	{
+		this.mParkPlanceList = mParkList;
+	}
 	public void SetParkPlance(ParkPlance parkPlance)
 	{
 		mParkPlance=parkPlance;
 	}
-	public int PushCar(List<ParkPlance> mParkList, int id, Car car)
+	public int PushCar( int id, Car car)
 	{
 		int index = new Random().nextInt(mParkList.size()+1);
 		if(index==mParkList.size())
 		{
-			for (ParkPlance park : mParkList)
+			for (ParkPlance park : mParkPlanceList)
 			{
 				if (!park.bFull()) { return park.PushCar(id, car); }
 			}

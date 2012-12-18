@@ -5,70 +5,116 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.kenny.park.ParkPlances;
+import com.kenny.park.ParkingBoy;
 import com.kenny.park.bean.Car;
 
-public class test 
+public class test
 {
-	//停车测试
+	// 停车测试
 	@Test
-	public void Push()
+	// case 1
+	public void ParkingBoy_case1()
 	{
-		//case 1
-		ParkPlances manager=new ParkPlances();
+		// case 1
+		ParkPlances manager = new ParkPlances();
 		manager.Init();
-		int result=	manager.PushCar(1,1, new Car());
-
-		Assert.assertEquals(manager.getMaxCount()-1, manager.Display());
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+		boy.PushCar(1, new Car());
+		Assert.assertEquals(manager.getMaxCount() - 1, manager.Display());
 		manager.Clear();
-		
-		//case 3
-		for(int i=0;i<manager.getMaxCount();i++)
+	}
+
+	@Test
+	public void ParkingBoy_case3()
+	{
+		// case 3
+		ParkPlances manager = new ParkPlances();
+		manager.Init();
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+		for (int i = 0; i < manager.getMaxCount(); i++)
 		{
-			manager.PushCar(1,i, new Car());
+			boy.PushCar(i, new Car());
 		}
 		Assert.assertTrue(manager.bFull());
-		result=manager.PushCar(1,5000,new Car());
+		int result = boy.PushCar(5000, new Car());
 		Assert.assertEquals(0, result);
 	}
-	//取车
+	// 存取车比较是否为同一辆车
+	// case 2
 	@Test
-	public void Pop()
+	public void ParkingBoy_case2()
 	{
-		//case 2
-		ParkPlances manager=new ParkPlances();
+		// case 2
+		ParkPlances manager = new ParkPlances();
 		manager.Init();
-		int result=	manager.PushCar(1, new Car());
-		Assert.assertEquals(manager.getMaxCount()-1, manager.Display());
-		Car obj=manager.PopCar(1);
-		Assert.assertNotNull(obj);		
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+		int result = boy.PushCar(1, new Car());
+		Assert.assertEquals(manager.getMaxCount() - 1, manager.Display());
+		Car obj = manager.PopCar(1);
+		Assert.assertNotNull(obj);
 		Assert.assertEquals(manager.getMaxCount(), manager.Display());
-		
-		//case 4//一个空停车场取车
-		manager.Clear();
-		obj=manager.PopCar(1);
-		Assert.assertNull(obj);//空
-		
-		//case 5//一个有效停车凭证取车 取出原来的车
-		manager.Clear();
-		Car car= new Car();
-		result=	manager.PushCar(1, car);
-		Assert.assertEquals(manager.getMaxCount()-1, manager.Display());
-		obj=manager.PopCar(1);
-		Assert.assertEquals(car,obj);		
+	}
+	// 存取车比较是否为同一辆车
+	// case 4//一个空停车场取车
+	@Test
+	public void ParkingBoy_case4()
+	{
+		ParkPlances manager = new ParkPlances();
+		manager.Init();
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
 
-		//case 6 无效停车证。取不出车
 		manager.Clear();
-		obj=manager.PopCar(100);
-		Assert.assertNull(obj);		
-		
-		//case 7有效停车证，取两次，第一次成功，第二次失败
+		Car obj = manager.PopCar(1);
+		Assert.assertNull(obj);// 空
+	}
+
+	// case 5//一个有效停车凭证取车 取出原来的车
+	@Test
+	public void ParkingBoy_case5()
+	{
+		ParkPlances manager = new ParkPlances();
+		manager.Init();
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+
 		manager.Clear();
-		result=	manager.PushCar(1, car);
-		Assert.assertEquals(manager.getMaxCount()-1, manager.Display());
-		obj=manager.PopCar(1);
-		Assert.assertNotNull(obj);	
-		obj=manager.PopCar(1);
+		Car car = new Car();
+		int result = boy.PushCar(1, car);
+		Assert.assertEquals(manager.getMaxCount() - 1, manager.Display());
+		Car obj = manager.PopCar(1);
+		Assert.assertEquals(car, obj);
+	}
+	// case 6 无效停车证。取不出车
+	@Test
+	public void ParkingBoy_case6()
+	{
+		ParkPlances manager = new ParkPlances();
+		manager.Init();
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+		manager.Clear();
+		Car obj = manager.PopCar(100);
 		Assert.assertNull(obj);
-		
+	}
+	// case 7有效停车证，取两次，第一次成功，第二次失败
+	@Test
+	public void ParkingBoy_case7()
+	{
+		ParkPlances manager = new ParkPlances();
+		manager.Init();
+		ParkingBoy boy = new ParkingBoy();
+		boy.setParkList(manager.getParkList());
+		manager.Clear();
+		int result = boy.PushCar(1, new Car());
+		Assert.assertEquals(manager.getMaxCount() - 1, manager.Display());
+		Car obj = manager.PopCar(1);
+		Assert.assertNotNull(obj);
+		obj = manager.PopCar(1);
+		Assert.assertNull(obj);
+
 	}
 }

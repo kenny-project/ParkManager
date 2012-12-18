@@ -6,7 +6,7 @@ import com.kenny.park.bean.Car;
 
 public interface IParkingBoy
 {
-	
-	public int PushCar(List<ParkPlance> mParkList, int id, Car car);
+	public void setParkList(List<ParkPlance> mParkList);
+	public int PushCar(int id, Car car);
 	public String Chart();
 }

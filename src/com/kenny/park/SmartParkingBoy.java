@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.kenny.park.bean.Car;
 
-public class SmartParkingBoy implements IParkingBoy
+public class SmartParkingBoy extends ParkingBoy
 {
-	protected int nType=ParkPlances.nSmartParkingBoy;
-	
-	public int PushCar(List<ParkPlance> mParkList, int id, Car car)
+	public SmartParkingBoy()
+	{
+		nType=ParkPlances.nSmartParkingBoy;
+	}
+	public int PushCar(int id, Car car)
 	{
 		int maxDisplay = 0;
 		ParkPlance temp = null;

@@ -7,8 +7,12 @@ import com.kenny.park.bean.Car;
 public class ParkingBoy implements IParkingBoy
 {
 	protected int nType=ParkPlances.nParkingBoy;
-	private List<ParkPlance> mParkList;
-	public int PushCar(List<ParkPlance> mParkList, int id, Car car)
+	protected List<ParkPlance> mParkList;
+	public void setParkList(List<ParkPlance> mParkList)
+	{
+		this.mParkList = mParkList;
+	}
+	public int PushCar( int id, Car car)
 	{
 		this.mParkList=mParkList;
 		for (ParkPlance park : mParkList)
