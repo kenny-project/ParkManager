@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+dependencies {
+    compile files('D:/program files (x86)/JetBrains/IntelliJ IDEA 11.1.3/lib/junit-4.10.jar')
+    runtime files('D:/program files (x86)/JetBrains/IntelliJ IDEA 11.1.3/lib/junit-4.10.jar')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/ParkingLotsModel/main'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/ParkingLotsModel/test'
+        }
+    }
+}
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+jar.baseName = 'parkingLotsModel'
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    baseName = 'parkingLotsModel'
+}
